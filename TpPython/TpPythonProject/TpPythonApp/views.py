@@ -4,8 +4,8 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
-from TpPythonApp.models import Producto
-from TpPythonApp.serializers import ProductoSerializer
+from TpPythonApp.models import Producto,Precio,Categoria
+from TpPythonApp.serializers import ProductoSerializer,PrecioSerializer,CategoriaSerializer
 from django.shortcuts import render
 from django.shortcuts import render
 
@@ -24,9 +24,12 @@ def producto_list(request):
     :return: todos los productos
     """
     if request.method == 'GET':
-        productos = Producto.objects.all()
-        serializer = ProductoSerializer(productos, many=True)
+        producto = Producto.objects.all()
+        serializer = ProductoSerializer(producto,many=True)
         return JSONResponse(serializer.data)
+        """productos = Producto.objects.all()
+        serializer = ProductoSerializer(productos, many=True)
+        return JSONResponse(serializer.data)"""
     elif request.method == 'POST':
         #no necesitamos que nadie envie peticiones a nuestra  api por el momento
         return None
@@ -52,4 +55,31 @@ def producto_detalle(request,pk):
         return None
     elif request.method == 'DELETE':
         #no permitimos que los usuarios borren elementos de nuestra BD
+        return None
+
+
+def categoria_list(request):
+    """
+    lista todos los productos junto a su categoria, stock y su precio.
+    :return: todos los productos
+    """
+    if request.method == 'GET':
+        categoria = Categoria.objects.all()
+        serializer = CategoriaSerializer(categoria,many=True)
+        return JSONResponse(serializer.data)
+    elif request.method == 'POST':
+        #no necesitamos que nadie envie peticiones a nuestra  api por el momento
+        return None
+
+def precios_list(request):
+    """
+    lista todos los productos junto a su categoria, stock y su precio.
+    :return: todos los productos
+    """
+    if request.method == 'GET':
+        precios = Precio.objects.all()
+        serializer = PrecioSerializer(precios,many=True)
+        return JSONResponse(serializer.data)
+    elif request.method == 'POST':
+        #no necesitamos que nadie envie peticiones a nuestra  api por el momento
         return None

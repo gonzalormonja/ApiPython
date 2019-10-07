@@ -10,7 +10,7 @@ from django.db import models
 
 class Categoria(models.Model):
     nombre = models.CharField(max_length=255)
-    categoriaPadre = models.ForeignKey('self',null=True,blank=True)
+    categoriaPadre = models.ForeignKey('self',null=True,blank=True,related_name='subcategorias')
 
 class Producto(models.Model):
     nombre = models.CharField(max_length=255)
