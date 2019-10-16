@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4b52945d-d0dc-49a0-a2ff-b31ce22f3142" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/TpPythonApp/cargarDatosSql.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/TpPythonProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/TpPythonProject.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TpPythonApp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/TpPythonApp/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TpPythonApp/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/TpPythonApp/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TpPythonApp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/TpPythonApp/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TpPythonApp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/TpPythonApp/views.py" afterDir="false" />
     </list>

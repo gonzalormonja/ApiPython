@@ -2,12 +2,13 @@
 from __future__ import unicode_literals
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
+from rest_framework import status
 from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
-from TpPythonApp.models import Producto,Precio,Categoria
+from TpPythonApp.models import Producto,Precio,Categoria,Empresa
 from TpPythonApp.serializers import ProductoSerializer,PrecioSerializer,CategoriaSerializer
 from django.shortcuts import render
-from django.shortcuts import render
+from rest_framework.exceptions import NotFound
 
 # Create your views here.
 class JSONResponse(HttpResponse):
@@ -18,12 +19,13 @@ class JSONResponse(HttpResponse):
         content = JSONRenderer().render(data)
         kwargs['content_type'] = 'application/json'
         super(JSONResponse,self).__init__(content,**kwargs)
-def producto_list(request):
+def producto_list(request,codigoEmpresa):
     """
     lista todos los productos junto a su categoria, stock y su precio.
     :return: todos los productos
     """
-    if request.method == 'GET':
+    empresa = Empresa.objects.filter(codigo=codigoEmpresa)
+    if request.method == 'GET' and empresa:
         producto = Producto.objects.all()
         serializer = ProductoSerializer(producto,many=True)
         return JSONResponse(serializer.data)
@@ -34,7 +36,7 @@ def producto_list(request):
         #no necesitamos que nadie envie peticiones a nuestra  api por el momento
         return None
 
-def producto_detalle(request,pk):
+def producto_detalle(request,pk,codigoEmpresa):
     """
     obtener un solo producto
     :param pk: id del producto
@@ -44,7 +46,8 @@ def producto_detalle(request,pk):
         producto = Producto.objects.get(pk=pk)
     except Producto.DoesNotExist:
         return HttpResponse(status=404)
-    if request.method == 'GET':
+    empresa = Empresa.objects.filter(codigo=codigoEmpresa)
+    if request.method == 'GET' and empresa:
         serializer = ProductoSerializer(producto)
         return JSONResponse(serializer.data)
     elif request.method == 'PUT':
