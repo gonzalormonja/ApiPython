@@ -14,7 +14,7 @@ class PrecioSerializer(serializers.ModelSerializer):
 class CategoriaParaProductoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Categoria
-        fields=('id','nombre')
+        fields=('idNombre','nombre')
 
 class ProductoSerializer(serializers.ModelSerializer):
     precios = PrecioSerializer(many=True)
