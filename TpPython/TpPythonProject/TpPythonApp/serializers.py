@@ -14,7 +14,6 @@ class PrecioSerializer(serializers.ModelSerializer):
 class CategoriaParaProductoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Categoria
-
         fields=('id','nombre')
 
 

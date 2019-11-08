@@ -1,0 +1,24 @@
+use TpFinalPython;
+insert into TpPythonApp_categoria(nombre)values("Perifericos");
+insert into TpPythonApp_categoria(nombre)values("Componentes");
+insert into TpPythonApp_categoria(nombre,categoriaPadre_id)values("Mouse",1);
+insert into TpPythonApp_categoria(nombre,categoriaPadre_id)values("Teclado",1);
+insert into TpPythonApp_categoria(nombre,categoriaPadre_id)values("Fuentes",2);
+insert into TpPythonApp_producto(nombre,cantidad,categoria_id)values("Teclado pepin34",5,4);
+insert into TpPythonApp_producto(nombre,cantidad,categoria_id)values("Teclado mint34",2,4);
+insert into TpPythonApp_producto(nombre,cantidad,categoria_id)values("fuente tecnocosita",10,5);
+insert into TpPythonApp_producto(nombre,cantidad,categoria_id)values("Mouse cosi54",15,3);
+insert into TpPythonApp_precio(precio,fechaPrecio,producto_id)values(250,STR_TO_DATE( '11-09-2019', '%d-%m-%Y'),1);
+insert into TpPythonApp_precio(precio,fechaPrecio,producto_id)values(500,STR_TO_DATE( '21-02-2019', '%d-%m-%Y'),2);
+insert into TpPythonApp_precio(precio,fechaPrecio,producto_id)values(350,STR_TO_DATE( '30-03-2019', '%d-%m-%Y'),3);
+insert into TpPythonApp_precio(precio,fechaPrecio,producto_id)values(150,STR_TO_DATE( '20-05-2019', '%d-%m-%Y'),4);
+insert into TpPythonApp_empresa(codigo,nombre)values("1234","Compra Cositas Informaticas S.R.L.");
+insert into TpPythonApp_empresa(codigo,nombre)values("5678","Compra Tecladitos S.A");
+insert into TpPythonApp_empresa_categorias(empresa_id,categoria_id)values(1,1);#todas las categorias padres
+insert into TpPythonApp_empresa_categorias(empresa_id,categoria_id)values(1,2);#todas las categorias padres
+insert into TpPythonApp_empresa_categorias(empresa_id,categoria_id)values(2,4);#solo teclados
+select * from TpPythonApp_empresa;
+select * from TpPythonApp_categoria;
+select * from TpPythonApp_empresa_categorias;
+select * from TpPythonApp_producto;
+select * from TpPythonApp_precio;
