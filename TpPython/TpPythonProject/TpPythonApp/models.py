@@ -24,4 +24,5 @@ class Precio(models.Model):
 
 class Empresa(models.Model):
     codigo = models.CharField(max_length=255)
+    nombre = models.CharField(max_length=255,default="sinNombre")
     categorias = models.ManyToManyField('Categoria')
