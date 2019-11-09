@@ -4,21 +4,44 @@ insert into TpPythonApp_categoria(nombre)values("Componentes");
 insert into TpPythonApp_categoria(nombre,categoriaPadre_id)values("Mouse",1);
 insert into TpPythonApp_categoria(nombre,categoriaPadre_id)values("Teclado",1);
 insert into TpPythonApp_categoria(nombre,categoriaPadre_id)values("Fuentes",2);
-insert into TpPythonApp_producto(nombre,cantidad,categoria_id)values("Teclado pepin34",5,4);
-insert into TpPythonApp_producto(nombre,cantidad,categoria_id)values("Teclado mint34",2,4);
-insert into TpPythonApp_producto(nombre,cantidad,categoria_id)values("fuente tecnocosita",10,5);
-insert into TpPythonApp_producto(nombre,cantidad,categoria_id)values("Mouse cosi54",15,3);
-insert into TpPythonApp_precio(precio,fechaPrecio,producto_id)values(250,STR_TO_DATE( '11-09-2019', '%d-%m-%Y'),1);
-insert into TpPythonApp_precio(precio,fechaPrecio,producto_id)values(500,STR_TO_DATE( '21-02-2019', '%d-%m-%Y'),2);
-insert into TpPythonApp_precio(precio,fechaPrecio,producto_id)values(350,STR_TO_DATE( '30-03-2019', '%d-%m-%Y'),3);
-insert into TpPythonApp_precio(precio,fechaPrecio,producto_id)values(150,STR_TO_DATE( '20-05-2019', '%d-%m-%Y'),4);
+insert into TpPythonApp_producto(nombre,cantidad,descripcion,categoria_id,precio)
+values("Teclado Genius Slimstar 130 Black",5,"
+Diseño del Teclado: Estandar,Interfaz: USB, Distribución de Teclado: Español,
+ Estilo de teclas: En bloque, Compatibilidad: Windows 7, 8, 10 o superior, Peso: 555 g,
+ Dimensiones (A x A x P): 439 x 142 x 25 mm",4,10);
+insert into TpPythonApp_producto(nombre,cantidad,descripcion,categoria_id,precio)
+values("Gamer Hyperx Alloy Origins Mecanico Rgb 2",2,"Marca : HyperX, Modelo : Alloy Origins
+, P/N: HX-KB6RDX-LA, UPC : 740617288599c,Interfaz : Usb, Tipo : Mecanico,
+ Teclas : HyperX Switch Lineal, Cable : Si, Tecla Ñ : Si, Color : Negro, Polling : 1000 Hz
+, Teclas Anti-Ghost : 100 %, Teclas Multimedia : Si, Modo de Juego : Si,
+ Retroiluminacion : RGB por tecla y 5 niveles de brillo, Tipo de conexión: USB Cable USB tipo C a cable USB tipo A
+, Dimensiones : 442,5 mm x 132,5 mm x 36,39 mm, Peso : 1075 g, Idioma : Español LatAm",4,50);
+insert into TpPythonApp_producto(nombre,cantidad,descripcion,categoria_id,precio)
+values("Fuente Pc Thermaltake Tr2 500w Reales 8 Amp",10,"Marca : Thermaltake, Modelo : TR-500
+, Potencia : 500 W, Modular : No, Coolers : 1, SLI & CrossFire : Si, MotherBoard 24+4 pines : Si de 24,
+ CPU +12V 8 pines : No, CPU +12V 4+4 pines : Si, SATA 5 pines : 5, Molex 4 pines : 6, PCIE 6 pines : 1,
+ PCIE 6+2 pines : Si, Floppy 4 pines : 1, Amperes en 5 V : 18 A, Amperes en 12 V : 18 A",5,35);
+insert into TpPythonApp_producto(nombre,cantidad,descripcion,categoria_id,precio)
+values("Logitech G203 Prodigy Pc Ps4 Rgb 8000 Dpi Usb",15,"Altura: 116,6 mm, Anchura: 62,15 mm,
+ Profundidad: 38,2 mm, Peso: 85 g, sólo mouse, Longitud de cable: 2,10 m, Resolución: 200 – 8.000 dpi,
+ Sin suavizado/aceleración/filtros, Formato de datos USB: 16 bits/eje, ,Velocidad de respuesta USB: 1000 Hz (1 ms)
+ Microprocesador: 32 bits ARM",3,15);
+insert into TpPythonApp_foto(url,producto_id)values("file:///home/gonzalomonja/Documentos/python/ApiPython/TpPython/TpPythonProject/TpPythonApp/img/fuente10.webp",3);
+insert into TpPythonApp_foto(url,producto_id)values("file:///home/gonzalomonja/Documentos/python/ApiPython/TpPython/TpPythonProject/TpPythonApp/img/fuente11.webp",3);
+insert into TpPythonApp_foto(url,producto_id)values("file:///home/gonzalomonja/Documentos/python/ApiPython/TpPython/TpPythonProject/TpPythonApp/img/fuente12.webp",3);
+insert into TpPythonApp_foto(url,producto_id)values("file:///home/gonzalomonja/Documentos/python/ApiPython/TpPython/TpPythonProject/TpPythonApp/img/mouse10.webp",4);
+insert into TpPythonApp_foto(url,producto_id)values("file:///home/gonzalomonja/Documentos/python/ApiPython/TpPython/TpPythonProject/TpPythonApp/img/mouse11.webp",4);
+insert into TpPythonApp_foto(url,producto_id)values("file:///home/gonzalomonja/Documentos/python/ApiPython/TpPython/TpPythonProject/TpPythonApp/img/mouse12.webp",4);
+insert into TpPythonApp_foto(url,producto_id)values("file:///home/gonzalomonja/Documentos/python/ApiPython/TpPython/TpPythonProject/TpPythonApp/img/teclado10.webp",1);
+insert into TpPythonApp_foto(url,producto_id)values("file:///home/gonzalomonja/Documentos/python/ApiPython/TpPython/TpPythonProject/TpPythonApp/img/teclado11.webp",1);
+insert into TpPythonApp_foto(url,producto_id)values("file:///home/gonzalomonja/Documentos/python/ApiPython/TpPython/TpPythonProject/TpPythonApp/img/teclado12.webp",1);
+insert into TpPythonApp_foto(url,producto_id)values("file:///home/gonzalomonja/Documentos/python/ApiPython/TpPython/TpPythonProject/TpPythonApp/img/teclado13.webp",1);
+insert into TpPythonApp_foto(url,producto_id)values("file:///home/gonzalomonja/Documentos/python/ApiPython/TpPython/TpPythonProject/TpPythonApp/img/teclado20.webp",2);
+insert into TpPythonApp_foto(url,producto_id)values("file:///home/gonzalomonja/Documentos/python/ApiPython/TpPython/TpPythonProject/TpPythonApp/img/teclado21.webp",2);
+insert into TpPythonApp_foto(url,producto_id)values("file:///home/gonzalomonja/Documentos/python/ApiPython/TpPython/TpPythonProject/TpPythonApp/img/teclado22.webp",2);
+
 insert into TpPythonApp_empresa(codigo,nombre)values("1234","Compra Cositas Informaticas S.R.L.");
 insert into TpPythonApp_empresa(codigo,nombre)values("5678","Compra Tecladitos S.A");
 insert into TpPythonApp_empresa_categorias(empresa_id,categoria_id)values(1,1);#todas las categorias padres
 insert into TpPythonApp_empresa_categorias(empresa_id,categoria_id)values(1,2);#todas las categorias padres
 insert into TpPythonApp_empresa_categorias(empresa_id,categoria_id)values(2,4);#solo teclados
-select * from TpPythonApp_empresa;
-select * from TpPythonApp_categoria;
-select * from TpPythonApp_empresa_categorias;
-select * from TpPythonApp_producto;
-select * from TpPythonApp_precio;

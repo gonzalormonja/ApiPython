@@ -5,10 +5,12 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework import status
 from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
-from TpPythonApp.models import Producto,Precio,Categoria,Empresa
-from TpPythonApp.serializers import ProductoSerializer,PrecioSerializer,CategoriaSerializer
+from TpPythonApp.models import Producto,Categoria,Empresa
+from TpPythonApp.serializers import ProductoSerializer,CategoriaSerializer,ProductoDetalleSerializer
 from django.shortcuts import render
 from rest_framework.exceptions import NotFound
+import requests
+
 
 # Create your views here.
 class JSONResponse(HttpResponse):
@@ -26,63 +28,54 @@ def producto_list(request,codigoEmpresa):
     """
     empresa = Empresa.objects.filter(codigo=codigoEmpresa)
     if request.method == 'GET' and empresa:
-        producto = Producto.objects.all()
-        serializer = ProductoSerializer(producto,many=True)
-        return JSONResponse(serializer.data)
-        """productos = Producto.objects.all()
-        serializer = ProductoSerializer(productos, many=True)
-        return JSONResponse(serializer.data)"""
-    elif request.method == 'POST':
-        #no necesitamos que nadie envie peticiones a nuestra  api por el momento
-        return None
+        productos = Producto.objects.all()
+        for p in productos:
+            url = 'https://api.cambio.today/v1/quotes/USD/ARS/json?key=2565|GMJKiRR3QLXUmyNqgxCC85^hV05UDmw_'
+            args = {'quantity':int(p.precio)}
+            response = requests.get(url,params=args)
+            response_json = response.json()
+            p.precio = response_json["result"]["amount"]
+        serializer = ProductoSerializer(productos,many=True)
+        response = JSONResponse(serializer.data)
+        return response
 
-def producto_detalle(request,pk,codigoEmpresa):
+def producto_detalle(request,idProducto,codigoEmpresa):
     """
     obtener un solo producto
     :param pk: id del producto
     :return: el producto
     """
     try:
-        producto = Producto.objects.get(pk=pk)
+        producto = Producto.objects.get(pk=idProducto)
     except Producto.DoesNotExist:
         return HttpResponse(status=404)
     empresa = Empresa.objects.filter(codigo=codigoEmpresa)
     if request.method == 'GET' and empresa:
-        serializer = ProductoSerializer(producto)
+        serializer = ProductoDetalleSerializer(producto)
         return JSONResponse(serializer.data)
-    elif request.method == 'PUT':
-        #no necesitamos que se pueda actualizar un elemento en estos momentos.
-        return None
-    elif request.method == 'POST':
-        #no necesitamos que se pueda crear un elemento en estos momentos
-        return None
-    elif request.method == 'DELETE':
-        #no permitimos que los usuarios borren elementos de nuestra BD
-        return None
 
+def productos_por_categoria(request,codigoEmpresa,idCategoria):
+    empresa = Empresa.objects.filter(codigo=codigoEmpresa)
+    if request.method == 'GET' and empresa:
+        cant = Categoria.objects.filter(categoriaPadre=idCategoria).count()
+        producto = Producto.objects.filter(categoria=idCategoria)
+        if(cant>0):
+            categorias = Categoria.objects.filter(categoriaPadre=idCategoria)
+            for categoria in categorias:
+                if(categoria.id!=idCategoria):
+                    producto |= Producto.objects.filter(categoria=categoria.id)
+        serializer = ProductoSerializer(producto, many=True)
+        response = JSONResponse(serializer.data)
+        return response
 
-def categoria_list(request):
+def categoria_list(request,codigoEmpresa):
     """
     lista todos los productos junto a su categoria, stock y su precio.
     :return: todos los productos
     """
-    if request.method == 'GET':
+    empresa = Empresa.objects.filter(codigo=codigoEmpresa)
+    if request.method == 'GET' and empresa:
         categoria = Categoria.objects.all()
         serializer = CategoriaSerializer(categoria,many=True)
-        return JSONResponse(serializer.data)
-    elif request.method == 'POST':
-        #no necesitamos que nadie envie peticiones a nuestra  api por el momento
-        return None
-
-def precios_list(request):
-    """
-    lista todos los productos junto a su categoria, stock y su precio.
-    :return: todos los productos
-    """
-    if request.method == 'GET':
-        precios = Precio.objects.all()
-        serializer = PrecioSerializer(precios,many=True)
-        return JSONResponse(serializer.data)
-    elif request.method == 'POST':
-        #no necesitamos que nadie envie peticiones a nuestra  api por el momento
-        return None
+        response = JSONResponse(serializer.data)
+        return response
