@@ -1,26 +1,32 @@
 #archivo creado para serializar.
 from rest_framework import serializers
-from .models import Producto,Precio,Categoria,Empresa
+from .models import Producto,Categoria,Empresa,Foto
 
 
-class PrecioSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Precio
-        fields = ('id','precio','fechaPrecio')
-
-
-
-
-class CategoriaParaProductoSerializer(serializers.ModelSerializer):
+class CategoriaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Categoria
-
-        fields=('id','nombre')
+        fields = ('id', 'nombre')
 
 
 class ProductoSerializer(serializers.ModelSerializer):
-    precios = PrecioSerializer(many=True)
-    categoria_set = serializers.ReadOnlyField(source='categoria.nombre')
+    categoria = serializers.ReadOnlyField(source='categoria.nombre')
+    fotos = serializers.SlugRelatedField(
+        many=True,
+        read_only=True,
+        slug_field='url'
+     )
     class Meta:
         model = Producto
-        fields = ('id','nombre','cantidad','categoria_set','precios')
+        fields = ('id','nombre','cantidad','categoria','fotos','precio')
+
+class ProductoDetalleSerializer(serializers.ModelSerializer):
+    categoria = serializers.ReadOnlyField(source='categoria.nombre')
+    fotos = serializers.SlugRelatedField(
+        many=True,
+        read_only=True,
+        slug_field='url'
+    )
+    class Meta:
+        model = Producto
+        fields = ('id','nombre','cantidad','categoria','descripcion','fotos','precio')

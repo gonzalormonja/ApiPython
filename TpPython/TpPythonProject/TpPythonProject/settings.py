@@ -37,12 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #dos siguientes lineas agregadas para incluir las apps necesarias.
+    #tres siguientes lineas agregadas para incluir las apps necesarias.
     'rest_framework',
     'TpPythonApp',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -72,6 +75,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'TpPythonProject.wsgi.application'
 
+CORS_ORIGIN_ALLOW_ALL=True
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
