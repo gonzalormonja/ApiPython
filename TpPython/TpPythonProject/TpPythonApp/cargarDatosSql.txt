@@ -40,8 +40,20 @@ insert into TpPythonApp_foto(url,producto_id)values("file:///home/gonzalomonja/D
 insert into TpPythonApp_foto(url,producto_id)values("file:///home/gonzalomonja/Documentos/python/ApiPython/TpPython/TpPythonProject/TpPythonApp/img/teclado21.webp",2);
 insert into TpPythonApp_foto(url,producto_id)values("file:///home/gonzalomonja/Documentos/python/ApiPython/TpPython/TpPythonProject/TpPythonApp/img/teclado22.webp",2);
 
-insert into TpPythonApp_empresa(codigo,nombre)values("1234","Compra Cositas Informaticas S.R.L.");
-insert into TpPythonApp_empresa(codigo,nombre)values("5678","Compra Tecladitos S.A");
-insert into TpPythonApp_empresa_categorias(empresa_id,categoria_id)values(1,1);#todas las categorias padres
-insert into TpPythonApp_empresa_categorias(empresa_id,categoria_id)values(1,2);#todas las categorias padres
+insert into TpPythonApp_pais(nombre,codigo)values("Argentina","ARS");
+insert into TpPythonApp_pais(nombre,codigo)values("Brasil","BRL");
+    insert into TpPythonApp_pais(nombre,codigo)values("España","EUR");
+insert into TpPythonApp_pais(nombre,codigo)values("Estados Unidos","USD");
+
+insert into TpPythonApp_empresa(codigo,nombre)values("1111","Compra Cositas Informaticas S.R.L.",1);
+insert into TpPythonApp_empresa(codigo,nombre)values("2222","Compra Tecladitos S.A",2);
+insert into TpPythonApp_empresa(codigo,nombre)values("3333","Compra Cositas Tecnologicas S.R.L.",3);
+insert into TpPythonApp_empresa(codigo,nombre)values("4444","Otro informatico S.A",4);
+
+insert into TpPythonApp_empresa_categorias(empresa_id,categoria_id)values(1,1);#Perifericos
+insert into TpPythonApp_empresa_categorias(empresa_id,categoria_id)values(1,2);#Componentes
 insert into TpPythonApp_empresa_categorias(empresa_id,categoria_id)values(2,4);#solo teclados
+
+insert into TpPythonApp_empresa_categorias(empresa_id,categoria_id)values(3,1);#Perifericos
+insert into TpPythonApp_empresa_categorias(empresa_id,categoria_id)values(3,2);#Componentes
+insert into TpPythonApp_empresa_categorias(empresa_id,categoria_id)values(4,3);#solo Mouse

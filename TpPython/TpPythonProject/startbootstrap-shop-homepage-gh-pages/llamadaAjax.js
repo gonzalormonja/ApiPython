@@ -3,7 +3,7 @@
 });*/
 
 function seleccionarCategoria(id){
-	let url = "http://127.0.0.1:8000/1234/productosCategoria/"+id+"/";
+	let url = "http://127.0.0.1:8000/1111/productosCategoria/"+id+"/";
 	const api = new XMLHttpRequest();
 	api.open('GET',url,true);
 	api.send();
@@ -42,7 +42,7 @@ window.onload=function() {
 }
 
 function obtenerCategorias(){
-	let url = "http://127.0.0.1:8000/1234/categorias/";
+	let url = "http://127.0.0.1:8000/2222/categorias/";
 	const api = new XMLHttpRequest();
 	api.open('GET',url,true);
 	api.send();
@@ -59,7 +59,7 @@ function obtenerCategorias(){
 }
 
 function obtenerProductosTotales(){
-	let url = "http://127.0.0.1:8000/1234/productos/";
+	let url = "http://127.0.0.1:8000/2222/productos/";
 	const api = new XMLHttpRequest();
 	api.open('GET',url,true);
 	api.send();
@@ -94,7 +94,7 @@ function obtenerProductosTotales(){
 }
 
 function verProducto(id){
-	let url = "http://127.0.0.1:8000/1234/productos/"+id+"/";
+	let url = "http://127.0.0.1:8000/2222/productos/"+id+"/";
 	const api = new XMLHttpRequest();
 	api.open('GET',url,true);
 	api.send();
@@ -102,7 +102,7 @@ function verProducto(id){
 	api.onreadystatechange = function(){
 		if(this.status==200 && this.readyState == 4){
 			datos = JSON.parse(this.responseText);
-			document.getElementById("precio").innerHTML = datos.precio;
+			document.getElementById("precio").innerHTML = "$"+datos.precio;
 			document.getElementById("nombre").innerHTML = datos.nombre;
 			document.getElementById("descripcion").innerHTML = datos.descripcion;
 			let resp = document.querySelector('#fotosModal');
