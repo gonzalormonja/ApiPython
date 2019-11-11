@@ -1,7 +1,3 @@
-/*document.querySelector('#test').addEventListener('click',function(){
-	obtenerProductosTotales();
-});*/
-
 function seleccionarCategoria(id){
 	let url = "http://127.0.0.1:8000/1111/productosCategoria/"+id+"/";
 	const api = new XMLHttpRequest();
@@ -42,7 +38,7 @@ window.onload=function() {
 }
 
 function obtenerCategorias(){
-	let url = "http://127.0.0.1:8000/2222/categorias/";
+	let url = "http://127.0.0.1:8000/1111/categorias/";
 	const api = new XMLHttpRequest();
 	api.open('GET',url,true);
 	api.send();
@@ -59,7 +55,7 @@ function obtenerCategorias(){
 }
 
 function obtenerProductosTotales(){
-	let url = "http://127.0.0.1:8000/2222/productos/";
+	let url = "http://127.0.0.1:8000/1111/productos/";
 	const api = new XMLHttpRequest();
 	api.open('GET',url,true);
 	api.send();
