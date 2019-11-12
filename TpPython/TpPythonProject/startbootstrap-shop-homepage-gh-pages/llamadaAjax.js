@@ -1,5 +1,10 @@
+
+
+var codigoEmpresa = "1111";
+
+
 function seleccionarCategoria(id){
-	let url = "http://127.0.0.1:8000/1111/productosCategoria/"+id+"/";
+	let url = "http://127.0.0.1:8000/"+codigoEmpresa+"/productosCategoria/"+id+"/";
 	const api = new XMLHttpRequest();
 	api.open('GET',url,true);
 	api.send();
@@ -38,7 +43,7 @@ window.onload=function() {
 }
 
 function obtenerCategorias(){
-	let url = "http://127.0.0.1:8000/1111/categorias/";
+	let url = "http://127.0.0.1:8000/"+codigoEmpresa+"/categorias/";
 	const api = new XMLHttpRequest();
 	api.open('GET',url,true);
 	api.send();
@@ -55,7 +60,7 @@ function obtenerCategorias(){
 }
 
 function obtenerProductosTotales(){
-	let url = "http://127.0.0.1:8000/1111/productos/";
+	let url = "http://127.0.0.1:8000/"+codigoEmpresa+"/productos/";
 	const api = new XMLHttpRequest();
 	api.open('GET',url,true);
 	api.send();
@@ -63,7 +68,6 @@ function obtenerProductosTotales(){
 	api.onreadystatechange = function(){
 		if(this.status==200 && this.readyState == 4){
 			datos = JSON.parse(this.responseText);
-			console.log(datos);
 			let resultado = document.querySelector('#resultado');
 			resultado.innerHTML = '';
 			for(let item of datos){
@@ -90,7 +94,7 @@ function obtenerProductosTotales(){
 }
 
 function verProducto(id){
-	let url = "http://127.0.0.1:8000/2222/productos/"+id+"/";
+	let url = "http://127.0.0.1:8000/"+codigoEmpresa+"/productos/"+id+"/";
 	const api = new XMLHttpRequest();
 	api.open('GET',url,true);
 	api.send();

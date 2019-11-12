@@ -21,6 +21,7 @@ class ProductoSerializer(serializers.ModelSerializer):
         model = Producto
         fields = ('id','nombre','cantidad','categoria','fotos','precio')
 
+
 class ProductoDetalleSerializer(serializers.ModelSerializer):
     categoria = serializers.ReadOnlyField(source='categoria.nombre')
     fotos = serializers.SlugRelatedField(

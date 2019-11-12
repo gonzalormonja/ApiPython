@@ -35,8 +35,8 @@ def producto_list(request,codigoEmpresa):
             productos |= Producto.objects.filter(categoria=categoria.id)
             if (cant > 0):
                 categoriasHijas = Categoria.objects.filter(categoriaPadre=categoria.id)
-                for  c in categoriasHijas:
-                        productos |= Producto.objects.filter(categoria=c.id)
+                for c in categoriasHijas:
+                    productos |= Producto.objects.filter(categoria=c.id)
         for p in productos:
             url = 'https://api.cambio.today/v1/quotes/USD/'+Pais.objects.get(id=empresa.pais_id).codigo+'/json?key=2565|GMJKiRR3QLXUmyNqgxCC85^hV05UDmw_'
             args = {'quantity':int(p.precio)}
@@ -72,7 +72,7 @@ def producto_detalle(request,idProducto,codigoEmpresa):
                         if(c.id==producto.categoria.id):
                             valido=True
         if(valido==True):
-            url = 'https://api.cambio.today/v1/quotes/USD/ARS/json?key=2565|GMJKiRR3QLXUmyNqgxCC85^hV05UDmw_'
+            url = 'https://api.cambio.today/v1/quotes/USD/'+Pais.objects.get(id=empresa.pais_id).codigo+'/json?key=2565|GMJKiRR3QLXUmyNqgxCC85^hV05UDmw_'
             args = {'quantity': int(producto.precio)}
             response = requests.get(url, params=args)
             response_json = response.json()
