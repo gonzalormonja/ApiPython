@@ -58,3 +58,4 @@ insert into TpPythonApp_empresa_categorias(empresa_id,categoria_id)values(3,1);#
 insert into TpPythonApp_empresa_categorias(empresa_id,categoria_id)values(3,2);#Componentes
 insert into TpPythonApp_empresa_categorias(empresa_id,categoria_id)values(4,3);#solo Mouse
 
+
